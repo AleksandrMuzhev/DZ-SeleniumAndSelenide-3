@@ -19,12 +19,13 @@ public class DebitCardTest {
     }
 
     @BeforeEach
-    void setupUp() {
+    void setUp() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
+        driver.get("http://localhost:9999");
     }
 
     @AfterEach
@@ -35,7 +36,6 @@ public class DebitCardTest {
 
     @Test
     public void shouldSendForm() throws InterruptedException {
-        driver.get("http://localhost:9999");
         List<WebElement> elements = driver.findElements(By.className("input__control"));
         elements.get(0).sendKeys("Александр");
         elements.get(1).sendKeys("+79120009999");
@@ -49,7 +49,6 @@ public class DebitCardTest {
 
     @Test
     public void shouldValidateNameForm() throws InterruptedException {
-        driver.get("http://localhost:9999");
         List<WebElement> elements = driver.findElements(By.className("input__control"));
         elements.get(0).sendKeys("Aleksandr");
         elements.get(1).sendKeys("+79120009999");
@@ -63,7 +62,6 @@ public class DebitCardTest {
 
     @Test
     public void shouldNoNameForm() throws InterruptedException {
-        driver.get("http://localhost:9999");
         driver.findElement(new By.ByCssSelector("[data-test-id=phone] input")).sendKeys("79120009999");
         driver.findElement(By.className("checkbox__box")).click();
         driver.findElement(By.className("button")).click();
@@ -75,7 +73,6 @@ public class DebitCardTest {
 
     @Test
     public void shouldValidatePhoneForm() throws InterruptedException {
-        driver.get("http://localhost:9999");
         List<WebElement> elements = driver.findElements(By.className("input__control"));
         elements.get(0).sendKeys("Александр");
         elements.get(1).sendKeys("+7912000");
@@ -89,7 +86,6 @@ public class DebitCardTest {
 
     @Test
     public void shouldNoPhoneForm() throws InterruptedException {
-        driver.get("http://localhost:9999");
         driver.findElement(new By.ByCssSelector("[data-test-id=name] input")).sendKeys("Александр");
         driver.findElement(By.className("checkbox__box")).click();
         driver.findElement(By.className("button")).click();

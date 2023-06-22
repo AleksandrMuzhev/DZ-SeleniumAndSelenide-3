@@ -24,6 +24,7 @@ public class DebitCardSelenideTest {
     @BeforeEach
     void setupUp() {
         driver = new ChromeDriver();
+        open("http://localhost:9999");
     }
 
     @AfterEach
@@ -34,7 +35,6 @@ public class DebitCardSelenideTest {
 
     @Test
     public void shouldSendFormSelenide() throws InterruptedException {
-        open("http://localhost:9999");
         SelenideElement form = $("form[enctype]");
         form.$("[data-test-id=name] input").setValue("Александр");
         form.$("[data-test-id=phone] input").setValue("+79120009999");
@@ -47,7 +47,6 @@ public class DebitCardSelenideTest {
 
     @Test
     public void shouldValidateNameFormSelenide() throws InterruptedException {
-        open("http://localhost:9999");
         SelenideElement form = $("form[enctype]");
         form.$("[data-test-id=name] input").setValue("Aleksandr");
         form.$("[data-test-id=phone] input").setValue("+79120009999");
@@ -60,7 +59,6 @@ public class DebitCardSelenideTest {
 
     @Test
     public void shouldNoNameFormSelenide() throws InterruptedException {
-        open("http://localhost:9999");
         SelenideElement form = $("form[enctype]");
         form.$("[data-test-id=phone] input").setValue("+79120009999");
         form.$(".checkbox__box").click();
@@ -72,7 +70,6 @@ public class DebitCardSelenideTest {
 
     @Test
     public void shouldValidatePhoneFormSelenide() throws InterruptedException {
-        open("http://localhost:9999");
         SelenideElement form = $("form[enctype]");
         form.$("[data-test-id=name] input").setValue("Александр");
         form.$("[data-test-id=phone] input").setValue("+7912000");
@@ -85,7 +82,6 @@ public class DebitCardSelenideTest {
 
     @Test
     public void shouldNoPhoneFormSelenide() throws InterruptedException {
-        open("http://localhost:9999");
         SelenideElement form = $("form[enctype]");
         form.$("[data-test-id=name] input").setValue("Александр");
         form.$(".checkbox__box").click();
