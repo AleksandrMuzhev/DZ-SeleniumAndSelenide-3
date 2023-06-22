@@ -42,7 +42,7 @@ public class DebitCardTest {
         driver.findElement(By.className("checkbox__box")).click();
         driver.findElement(By.className("button")).click();
         String text = driver.findElement(new By.ByCssSelector("[data-test-id=order-success]")).getText();
-        Assertions.assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text.trim());
+        Assertions.assertEquals("Ваш заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text.trim());
 
         Thread.sleep(5000);
     }
